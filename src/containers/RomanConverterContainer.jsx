@@ -11,6 +11,8 @@ class RomanConverterContainer extends React.Component {
         }
     }
 
+    //function to toggle the converter from and to Roman
+    //this function is avaiable to child components using props
     changeConverter(type) {
         if (type === "Roman") {
             this.setState({ showIntegerToRomanFormat: false });
@@ -20,6 +22,7 @@ class RomanConverterContainer extends React.Component {
         }
     }
 
+    //render function renders IntegerToRoman or RomanToInteger based on state
     render() {
         return (<>
             {this.state.showIntegerToRomanFormat ?

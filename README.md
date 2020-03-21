@@ -44,7 +44,7 @@ No redux is used in this application for managing application state as it is a s
 ### `API`
 RomanNumeralsAPI.js implements 2 methods toRoman(inpNumber) and fromRoman(inpRoman). Promise is used as a sample for better error handling and better callbacks.
 
-### `Styles`
+### `styles`
 App.css is modified for implementing basic styling and layout.
 
 ### `SUPPORTED BROWSERS`

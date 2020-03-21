@@ -1,4 +1,5 @@
 class RomanNumeralsAPI {
+    //toRoman converts integer to roman
     static toRoman(inpNumber) {
         return new Promise((resolve, reject) => {
             let roman = "";
@@ -9,7 +10,7 @@ class RomanNumeralsAPI {
             };
             let validator;
             if (number < 1 || number > 3999)
-                roman = -1;
+                reject(-1);
             else {
                 for (let key in romanNumList) {
                     validator = Math.floor(number / romanNumList[key]);
@@ -25,12 +26,15 @@ class RomanNumeralsAPI {
         });
     }
 
+    //fromRoman converts roman to integer
     static fromRoman(inpRoman) {
         return new Promise((resolve, reject) => {
             let roman = inpRoman.toUpperCase(),
-                lookup = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 },
                 number = 0,
                 i = roman.length;
+            const lookup = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+
+            //Regular expression to validate roman numeral input
             let validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
 
             if (validator.test(roman)) {
@@ -40,8 +44,11 @@ class RomanNumeralsAPI {
                     else
                         number += lookup[roman[i]];
                 }
+                resolve(number);
             }
-            resolve(number);
+            else {
+                reject(-1);
+            }
         });
     }
 }
