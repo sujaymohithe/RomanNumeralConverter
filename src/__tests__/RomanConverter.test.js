@@ -66,9 +66,15 @@ describe('<IntegerToRoman/> component', () => {
         expect(mockCallBack.mock.calls.length).toEqual(1);
     })
 
-    it('test toRoman function', () => {
+    it('test toRoman function for valid input', () => {
         return toRoman('1990').then(result => {
             expect(result).toBe('MCMXC');
+        })
+    })
+
+    it('test toRoman function for invalid input', () => {
+        return toRoman('40000').catch(error => {
+            expect(error).toBe(-1);
         })
     })
 
@@ -109,6 +115,12 @@ describe('<RomanToInteger/> component', () => {
     it('test fromRoman function', () => {
         return fromRoman('MCMXC').then(result => {
             expect(result).toBe(1990);
+        })
+    })
+
+    it('test fromRoman function for invalid input', () => {
+        return fromRoman('A').catch(error => {
+            expect(error).toBe(-1);
         })
     })
 
